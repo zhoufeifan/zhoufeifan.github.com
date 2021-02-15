@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>1、什么是浅拷贝 | 周非凡个人博客</title>
+    <meta name="description" content="Vue 驱动的静态网站生成器">
+    
+    
+    <link rel="preload" href="/assets/css/0.styles.d01e3fed.css" as="style"><link rel="preload" href="/assets/js/app.c9da9db2.js" as="script"><link rel="preload" href="/assets/js/2.febc0262.js" as="script"><link rel="preload" href="/assets/js/23.012b6e4c.js" as="script"><link rel="prefetch" href="/assets/js/10.0253064e.js"><link rel="prefetch" href="/assets/js/11.175002a3.js"><link rel="prefetch" href="/assets/js/12.c9c2623b.js"><link rel="prefetch" href="/assets/js/13.a252b052.js"><link rel="prefetch" href="/assets/js/14.6a53dc1e.js"><link rel="prefetch" href="/assets/js/15.84088994.js"><link rel="prefetch" href="/assets/js/16.09fbb166.js"><link rel="prefetch" href="/assets/js/17.38b70eaf.js"><link rel="prefetch" href="/assets/js/18.24a31878.js"><link rel="prefetch" href="/assets/js/19.e58abf47.js"><link rel="prefetch" href="/assets/js/20.a4e1f7ec.js"><link rel="prefetch" href="/assets/js/21.520b96e8.js"><link rel="prefetch" href="/assets/js/22.8455ead8.js"><link rel="prefetch" href="/assets/js/24.90bca786.js"><link rel="prefetch" href="/assets/js/25.0b9867c9.js"><link rel="prefetch" href="/assets/js/26.5835b50d.js"><link rel="prefetch" href="/assets/js/27.90bf64b9.js"><link rel="prefetch" href="/assets/js/28.8b2856a2.js"><link rel="prefetch" href="/assets/js/29.4f0f0797.js"><link rel="prefetch" href="/assets/js/3.b8e8b8dc.js"><link rel="prefetch" href="/assets/js/30.ec214258.js"><link rel="prefetch" href="/assets/js/31.19d008c9.js"><link rel="prefetch" href="/assets/js/32.e2e7fb69.js"><link rel="prefetch" href="/assets/js/33.e7250e7c.js"><link rel="prefetch" href="/assets/js/34.6af80751.js"><link rel="prefetch" href="/assets/js/35.8c6fd912.js"><link rel="prefetch" href="/assets/js/36.abacb260.js"><link rel="prefetch" href="/assets/js/37.872fafd6.js"><link rel="prefetch" href="/assets/js/38.c11a6237.js"><link rel="prefetch" href="/assets/js/39.0251e2ab.js"><link rel="prefetch" href="/assets/js/4.a97bd63a.js"><link rel="prefetch" href="/assets/js/40.490030c9.js"><link rel="prefetch" href="/assets/js/41.ae009df1.js"><link rel="prefetch" href="/assets/js/42.733a49d6.js"><link rel="prefetch" href="/assets/js/43.6b0719ec.js"><link rel="prefetch" href="/assets/js/44.8abd3659.js"><link rel="prefetch" href="/assets/js/45.7e9da5d6.js"><link rel="prefetch" href="/assets/js/46.69831b02.js"><link rel="prefetch" href="/assets/js/47.0187e2c6.js"><link rel="prefetch" href="/assets/js/48.d573af72.js"><link rel="prefetch" href="/assets/js/49.c0de9630.js"><link rel="prefetch" href="/assets/js/5.9f3cace6.js"><link rel="prefetch" href="/assets/js/50.dd93629a.js"><link rel="prefetch" href="/assets/js/51.0de94388.js"><link rel="prefetch" href="/assets/js/52.f40156a5.js"><link rel="prefetch" href="/assets/js/53.cd0087a3.js"><link rel="prefetch" href="/assets/js/54.dc27779e.js"><link rel="prefetch" href="/assets/js/55.e83361b5.js"><link rel="prefetch" href="/assets/js/56.e98fbba1.js"><link rel="prefetch" href="/assets/js/57.29f5154b.js"><link rel="prefetch" href="/assets/js/58.2a266b80.js"><link rel="prefetch" href="/assets/js/59.a0a6d426.js"><link rel="prefetch" href="/assets/js/6.ea94c1bd.js"><link rel="prefetch" href="/assets/js/60.431c1ff3.js"><link rel="prefetch" href="/assets/js/61.f3c25606.js"><link rel="prefetch" href="/assets/js/62.df795bbf.js"><link rel="prefetch" href="/assets/js/7.954bbdf7.js"><link rel="prefetch" href="/assets/js/8.5ac09073.js"><link rel="prefetch" href="/assets/js/9.1c3b9112.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.d01e3fed.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-navbar"><!----> <div class="sidebar-mask"></div> <aside class="sidebar"><!---->  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>CSS 专题</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/doc/css/1.html" class="sidebar-link">css 常用知识点</a></li><li><a href="/doc/css/2.html" class="sidebar-link">清除浮动</a></li><li><a href="/doc/css/3.html" class="sidebar-link">三大经典问题</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>HTML 专题</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/doc/html/1.html" class="sidebar-link">浏览器解析流程</a></li><li><a href="/doc/html/2.html" class="sidebar-link">viewport原理</a></li><li><a href="/doc/html/3.html" class="sidebar-link">meta标签</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>JS 专题</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/doc/js/1-1.html" class="sidebar-link">堆栈调用（上篇）</a></li><li><a href="/doc/js/1-2.html" class="sidebar-link">堆栈调用（下篇）</a></li><li><a href="/doc/js/2.html" class="sidebar-link">作用域与闭包</a></li><li><a href="/doc/js/3.html" class="sidebar-link">this绑定解析</a></li><li><a href="/doc/js/4-1.html" class="sidebar-link">call、apply原理与使用场景</a></li><li><a href="/doc/js/4-2.html" class="sidebar-link">bind 的原理与使用场景</a></li><li><a href="/doc/js/5-1.html" class="active sidebar-link">浅拷贝概念以及实现原理</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/doc/js/5-2.html" class="sidebar-link">深拷贝概念以及实现原理</a></li><li><a href="/doc/js/6-1.html" class="sidebar-link">原型与继承之基本概念</a></li><li><a href="/doc/js/6-2.html" class="sidebar-link">原型与继承之（6种继承方案）</a></li><li><a href="/doc/js/7.html" class="sidebar-link">事件机制</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>工具函数 专题</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/doc/utils/1.html" class="sidebar-link">常见的JS方法</a></li><li><a href="/doc/utils/2.html" class="sidebar-link">常见的正则表达式</a></li><li><a href="/doc/utils/3.html" class="sidebar-link">常用的时间处理方法</a></li><li><a href="/doc/utils/4.html" class="sidebar-link">常用的金额处理方法</a></li><li><a href="/doc/utils/5.html" class="sidebar-link">继承和原型链demo</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>HTTP 专题</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/doc/http/1.html" class="sidebar-link">常见的14种响应状态码</a></li><li><a href="/doc/http/2.html" class="sidebar-link">Http首部字段</a></li><li><a href="/doc/http/3.html" class="sidebar-link">Https介绍</a></li><li><a href="/doc/http/4.html" class="sidebar-link">Web的攻击技术</a></li><li><a href="/doc/http/5.html" class="sidebar-link">Http 发展历史</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>Vue 专题</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/doc/vue/1.html" class="sidebar-link">Vue 双向绑定的原理</a></li><li><a href="/doc/vue/2.html" class="sidebar-link">Vue 踩坑总结</a></li><li><a href="/doc/vue/3.html" class="sidebar-link">Vue 生命周期详解</a></li><li><a href="/doc/vue/4.html" class="sidebar-link">Vuex 基本用法</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>Node 专题</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/doc/node/1.html" class="sidebar-link">用node撸一个前端自动化发布工具</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>项目总结</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/doc/project/1.html" class="sidebar-link">H5项目总结</a></li><li><a href="/doc/project/2.html" class="sidebar-link">首页优化项目总结</a></li><li><a href="/doc/project/3.html" class="sidebar-link">vue 输入限制</a></li><li><a href="/doc/project/4.html" class="sidebar-link">搜车库项目总结</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h3 id="_1、什么是浅拷贝"><a href="#_1、什么是浅拷贝" aria-hidden="true" class="header-anchor">#</a> 1、什么是浅拷贝</h3> <p>拷贝一个新的对象，该对象对原始对象的属性值有着一份精确的拷贝，如果属性是基本类型，拷贝的就是基本类型的值，如果属性是引用类型，拷贝的就是内存地址 ，所以如果其中一个对象改变了这个地址，就会影响到另一个对象。</p> <p><img src="http://image.zhoufeifan.tech/blog/js/5/1.jpg" alt="image"></p> <p>如上图所示，SourceObject 是原对象，其中包含基本类型属性 field1 和引用类型属性 refObj。浅拷贝之后基本类型数据 field2 和 filed1 是不同属性，互不影响。但引用类型 refObj 仍然是同一个。改变任意一个对象的refObj的属性值，都会对另一个对象造成影响。</p> <p>简单来说可以理解为浅拷贝只解决了第一层的问题，拷贝第一层的基本类型值，以及第一层的引用类型地址。</p> <h3 id="_2、使用场景"><a href="#_2、使用场景" aria-hidden="true" class="header-anchor">#</a> 2、使用场景</h3> <h4 id="object-assign"><a href="#object-assign" aria-hidden="true" class="header-anchor">#</a> Object.assign()</h4> <p>该方法用于将所有可枚举属性的值从一个或多个源对象复制到目标对象。它将返回目标对象，其本质也是浅拷贝。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">let</span> a <span class="token operator">=</span> <span class="token punctuation">{</span>
+    name<span class="token punctuation">:</span> <span class="token string">&quot;Tom&quot;</span><span class="token punctuation">,</span>
+    book<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        title<span class="token punctuation">:</span> <span class="token string">&quot;You Don't Know JS&quot;</span><span class="token punctuation">,</span>
+        price<span class="token punctuation">:</span> <span class="token string">&quot;45&quot;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">let</span> b <span class="token operator">=</span> Object<span class="token punctuation">.</span><span class="token function">assign</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> a<span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// {</span>
+<span class="token comment">//     name: &quot;Tom&quot;,</span>
+<span class="token comment">//     book: {title: &quot;You Don't Know JS&quot;, price: &quot;45&quot;}</span>
+<span class="token comment">// } </span>
+
+a<span class="token punctuation">.</span>name <span class="token operator">=</span> <span class="token string">&quot;Aim&quot;</span><span class="token punctuation">;</span>
+a<span class="token punctuation">.</span>book<span class="token punctuation">.</span>price <span class="token operator">=</span> <span class="token string">&quot;55&quot;</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// {</span>
+<span class="token comment">//     name: &quot;Aim&quot;,</span>
+<span class="token comment">//     book: {title: &quot;You Don't Know JS&quot;, price: &quot;55&quot;}</span>
+<span class="token comment">// } </span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// {</span>
+<span class="token comment">//     name: &quot;Tom&quot;,</span>
+<span class="token comment">//     book: {title: &quot;You Don't Know JS&quot;, price: &quot;55&quot;}</span>
+<span class="token comment">// } </span>
+</code></pre></div><h4 id="es6-spread-语法"><a href="#es6-spread-语法" aria-hidden="true" class="header-anchor">#</a> ES6 Spread 语法</h4> <p><strong>其效果等价于 Object.assign()</strong></p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">let</span> a <span class="token operator">=</span> <span class="token punctuation">{</span>
+    name<span class="token punctuation">:</span> <span class="token string">&quot;Tom&quot;</span><span class="token punctuation">,</span>
+    book<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        title<span class="token punctuation">:</span> <span class="token string">&quot;You Don't Know JS&quot;</span><span class="token punctuation">,</span>
+        price<span class="token punctuation">:</span> <span class="token string">&quot;45&quot;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">let</span> b <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token operator">...</span>a<span class="token punctuation">}</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// {</span>
+<span class="token comment">//     name: &quot;Tom&quot;,</span>
+<span class="token comment">//     book: {title: &quot;You Don't Know JS&quot;, price: &quot;45&quot;}</span>
+<span class="token comment">// } </span>
+
+a<span class="token punctuation">.</span>name <span class="token operator">=</span> <span class="token string">&quot;Aim&quot;</span><span class="token punctuation">;</span>
+a<span class="token punctuation">.</span>book<span class="token punctuation">.</span>price <span class="token operator">=</span> <span class="token string">&quot;55&quot;</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// {</span>
+<span class="token comment">//     name: &quot;Aim&quot;,</span>
+<span class="token comment">//     book: {title: &quot;You Don't Know JS&quot;, price: &quot;55&quot;}</span>
+<span class="token comment">// } </span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// {</span>
+<span class="token comment">//     name: &quot;Tom&quot;,</span>
+<span class="token comment">//     book: {title: &quot;You Don't Know JS&quot;, price: &quot;55&quot;}</span>
+<span class="token comment">// } </span>
+</code></pre></div><p><strong>另外Array.prototype.slice 与 Array.prototype.concat 都是对原数组的浅拷贝。</strong></p> <h3 id="浅拷贝-object-assign-的模拟实现"><a href="#浅拷贝-object-assign-的模拟实现" aria-hidden="true" class="header-anchor">#</a> 浅拷贝 Object.assign 的模拟实现</h3> <p>其功能主要是将所有可枚举属性的值从一个或多个源对象复制到目标对象，同时返回目标对象。</p> <div class="tip custom-block"><p class="custom-block-title">提示</p> <p>语法：Object.assign(target, ...sources)</p></div> <h4 id="示例"><a href="#示例" aria-hidden="true" class="header-anchor">#</a> 示例</h4> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">var</span> target <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">'name'</span><span class="token punctuation">:</span> <span class="token string">'Jack'</span><span class="token punctuation">}</span>
+<span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">'name'</span><span class="token punctuation">:</span> <span class="token string">'Tom'</span><span class="token punctuation">,</span> age<span class="token punctuation">:</span> <span class="token number">18</span><span class="token punctuation">,</span> empty1<span class="token punctuation">:</span> <span class="token keyword">null</span><span class="token punctuation">}</span>
+<span class="token keyword">var</span> b <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">'name'</span><span class="token punctuation">:</span> <span class="token string">'Alice'</span><span class="token punctuation">,</span> <span class="token keyword">class</span><span class="token punctuation">:</span> <span class="token string">'A'</span><span class="token punctuation">,</span> empty2<span class="token punctuation">:</span> <span class="token keyword">undefined</span><span class="token punctuation">}</span>
+Object<span class="token punctuation">.</span><span class="token function">assign</span><span class="token punctuation">(</span>target<span class="token punctuation">,</span>a<span class="token punctuation">,</span>b<span class="token punctuation">)</span>
+<span class="token comment">//tagert </span>
+<span class="token comment">// {</span>
+<span class="token comment">//   name: 'Alice',</span>
+<span class="token comment">//   age: '18',</span>
+<span class="token comment">//   class: 'A'</span>
+<span class="token comment">//   empty1: null,</span>
+<span class="token comment">//   empty2: undefined</span>
+<span class="token comment">// }</span>
+</code></pre></div><ul><li><p>如果目标对象中的属性具有相同的键，则属性将被源对象中的属性覆盖。后面的源对象的属性将类似地覆盖前面的属性。</p></li> <li><p>而且不会跳过那些值为 null 或 undefined 的源对象。</p></li> <li><p>原始类型传入后，会被包装成对象，不能被包装成对象的将会被忽略</p></li></ul> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">var</span> v1 <span class="token operator">=</span> <span class="token string">&quot;abc&quot;</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> v2 <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> v3 <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> v4 <span class="token operator">=</span> <span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token string">&quot;foo&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">var</span> obj <span class="token operator">=</span> Object<span class="token punctuation">.</span><span class="token function">assign</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> v1<span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">,</span> v2<span class="token punctuation">,</span> <span class="token keyword">undefined</span><span class="token punctuation">,</span> v3<span class="token punctuation">,</span> v4<span class="token punctuation">)</span><span class="token punctuation">;</span> 
+<span class="token comment">// 原始类型会被包装，null 和 undefined 会被忽略。</span>
+<span class="token comment">// 注意，只有字符串的包装对象才可能有自身可枚举属性。</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">;</span> 
+<span class="token comment">// { &quot;0&quot;: &quot;a&quot;, &quot;1&quot;: &quot;b&quot;, &quot;2&quot;: &quot;c&quot; }</span>
+</code></pre></div><div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token string">&quot;abc&quot;</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> b <span class="token operator">=</span> <span class="token punctuation">{</span>
+    v1<span class="token punctuation">:</span> <span class="token string">&quot;def&quot;</span><span class="token punctuation">,</span>
+    v2<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    v3<span class="token punctuation">:</span> <span class="token number">10</span><span class="token punctuation">,</span>
+    v4<span class="token punctuation">:</span> <span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token string">&quot;foo&quot;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    v5<span class="token punctuation">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
+    v6<span class="token punctuation">:</span> <span class="token keyword">undefined</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">var</span> obj <span class="token operator">=</span> Object<span class="token punctuation">.</span><span class="token function">assign</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">;</span> 
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">//目标对象 a 会被包装成 [String: 'abc']</span>
+<span class="token comment">// String {</span>
+<span class="token comment">// [String: 'abc']</span>
+<span class="token comment">//     v1: &quot;def&quot;,</span>
+<span class="token comment">//     v2: true,</span>
+<span class="token comment">//     v3: 10,</span>
+<span class="token comment">//     v4: Symbol(foo),</span>
+<span class="token comment">//     v5: null,</span>
+<span class="token comment">//     v6: undefined</span>
+<span class="token comment">// }</span>
+</code></pre></div><p><strong>注意：下面的例子会报错</strong></p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token string">&quot;abc&quot;</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> b <span class="token operator">=</span> <span class="token string">&quot;def&quot;</span><span class="token punctuation">;</span>
+Object<span class="token punctuation">.</span><span class="token function">assign</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// TypeError: Cannot assign to read only property '0' of object '[object String]'</span>
+
+<span class="token comment">// 拷贝过程中 a,b 字符串会被包装成String 类型的对象 </span>
+<span class="token comment">// String类型对象属性0是是只读的，上面的操作等价于{0:'a',1:'b',2:'c'} &lt;=&gt; {0:'d',1:'e',2:'f'} </span>
+<span class="token comment">// 试图改变属性名'0' 的属性值就会报错</span>
+<span class="token keyword">var</span> myObject <span class="token operator">=</span> <span class="token function">Object</span><span class="token punctuation">(</span> <span class="token string">&quot;abc&quot;</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+Object<span class="token punctuation">.</span><span class="token function">getOwnPropertyNames</span><span class="token punctuation">(</span> myObject <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// [ '0', '1', '2', 'length' ]</span>
+
+Object<span class="token punctuation">.</span><span class="token function">getOwnPropertyDescriptor</span><span class="token punctuation">(</span>myObject<span class="token punctuation">,</span> <span class="token string">&quot;0&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// { </span>
+<span class="token comment">//   value: 'a',</span>
+<span class="token comment">//   writable: false, // 注意这里, '0' 这个属性是只读的</span>
+<span class="token comment">//   enumerable: true,</span>
+<span class="token comment">//   configurable: false </span>
+<span class="token comment">// }</span>
+</code></pre></div><p><strong>同理这段代码也会报错</strong></p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token string">&quot;abc&quot;</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> b <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token number">1</span><span class="token punctuation">:</span> <span class="token string">&quot;d&quot;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+Object<span class="token punctuation">.</span><span class="token function">assign</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">;</span> 
+<span class="token comment">// TypeError: Cannot assign to read only property '1' of object '[object String]'</span>
+</code></pre></div><h3 id="实现思路"><a href="#实现思路" aria-hidden="true" class="header-anchor">#</a> 实现思路</h3> <ul><li>1、判断原生 Object 是否支持该函数，如果不存在的话创建一个函数 assign，并使用 Object.defineProperty 将该函数绑定到 Object 上。</li> <li>2、判断参数是否正确，目标对象参数不能为空，源对象参数至少有一个。</li> <li>3、使用 Object() 转成对象，并保存为 to，最后返回这个对象 to。</li> <li>4、使用 for..in 循环遍历出所有可枚举的自有属性。并复制给新的目标对象</li></ul> <h3 id="注意"><a href="#注意" aria-hidden="true" class="header-anchor">#</a> 注意</h3> <h4 id="为什么要使用-object-defineproperty，而不是直接挂载属性"><a href="#为什么要使用-object-defineproperty，而不是直接挂载属性" aria-hidden="true" class="header-anchor">#</a> 为什么要使用 Object.defineProperty，而不是直接挂载属性</h4> <div class="tip custom-block"><p>原生情况下挂载在 Object
+上的属性是不可枚举的，但是直接在 Object 上挂载属性  之后是可枚举的，所以这里必须使用 Object.defineProperty，并设置 enumerable: false 以及 writable: true, configurable: true。</p></div> <h4 id="检测存在性"><a href="#检测存在性" aria-hidden="true" class="header-anchor">#</a> 检测存在性</h4> <div class="tip custom-block"><p>for in 遍历属性的时候需要用hasOwnProperty检查，该属性是直接绑定在该对象上的，而不是其原型链上。但是直接使用 myObject.hasOwnProperty(..) 是有问题的，因为有的对象可能没有连接到 Object.prototype 上（比如通过 Object.create(null) 来创建）。因此保险起见，借用Object.prototype 上的 hasOwnProperty 的方法来做检测。</p></div> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">var</span> myObject <span class="token operator">=</span> Object<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span> <span class="token keyword">null</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+myObject<span class="token punctuation">.</span>b <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+
+<span class="token class-name">Object</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function">hasOwnProperty</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>myObject<span class="token punctuation">,</span> <span class="token string">&quot;b&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><h4 id="最终实现"><a href="#最终实现" aria-hidden="true" class="header-anchor">#</a> 最终实现</h4> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> Object<span class="token punctuation">.</span>assign <span class="token operator">!=</span> <span class="token string">'function'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// Attention 1</span>
+  Object<span class="token punctuation">.</span><span class="token function">defineProperty</span><span class="token punctuation">(</span>Object<span class="token punctuation">,</span> <span class="token string">&quot;assign2&quot;</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+    <span class="token function-variable function">value</span><span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">target</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token string">'use strict'</span><span class="token punctuation">;</span>
+      <span class="token comment">// 参数检测</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>target<span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+        <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">TypeError</span><span class="token punctuation">(</span><span class="token string">'Cannot convert undefined or null to object'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+
+      <span class="token comment">// 原始类型被包装为对象</span>
+      <span class="token keyword">var</span> to <span class="token operator">=</span> <span class="token function">Object</span><span class="token punctuation">(</span>target<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+      <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> index <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> index <span class="token operator">&lt;</span> arguments<span class="token punctuation">.</span>length<span class="token punctuation">;</span> index<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">var</span> nextSource <span class="token operator">=</span> arguments<span class="token punctuation">[</span>index<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>nextSource <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+          <span class="token comment">// 遍历对象属性进行拷贝</span>
+          <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> nextKey <span class="token keyword">in</span> nextSource<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token class-name">Object</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function">hasOwnProperty</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>nextSource<span class="token punctuation">,</span> nextKey<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+              to<span class="token punctuation">[</span>nextKey<span class="token punctuation">]</span> <span class="token operator">=</span> nextSource<span class="token punctuation">[</span>nextKey<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+          <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+      <span class="token keyword">return</span> to<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    writable<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    configurable<span class="token punctuation">:</span> <span class="token boolean">true</span>，
+    enumerable<span class="token punctuation">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>  <span class="token comment">// 不可枚举</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+        ←
+        <a href="/doc/js/4-2.html" class="prev">
+          bind 的原理与使用场景
+        </a></span> <span class="next"><a href="/doc/js/5-2.html">
+          深拷贝概念以及实现原理
+        </a>
+        →
+      </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.c9da9db2.js" defer></script><script src="/assets/js/2.febc0262.js" defer></script><script src="/assets/js/23.012b6e4c.js" defer></script>
+  </body>
+</html>
